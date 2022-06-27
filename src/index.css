@@ -1,13 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;700&family=DM+Serif+Display&family=Inconsolata:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800;900&family=Overpass+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+html {
+  margin:0;
+}
+
+:root {
+  --color1: rgb(67, 0, 100);
+  --color2: rgb(0, 0, 0);
+}
+
+
 body {
+  background-image: linear-gradient(0deg, var(--color1) 1%, var(--color2));
+  color: rgb(235, 242, 255);
+  /* background-color: rgb(44, 2, 29); */
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Archivo', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 97.5vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::selection {
+  background-color: rgba(255, 255, 255, 0.417);
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1%;
+}
+
+header {
+  display: flex;
+  float:left;
+  align-items: center;
+  justify-content: left;
+  font-size: 40px;
+  height: 150px;
+  width: 60%;
+}
+
+h1 {
+  font-family: 'Inter', 'Overpass Mono', serif, monospace;
+  font-weight: 800;
+  letter-spacing: -8px;
+  word-spacing: 15px;
+  cursor: pointer;
+}
+
+header:hover {
+  text-decoration: underline dotted 5px;
+  text-underline-offset: 10px;
+}
+
+.information {
+  font-family: 'Inter', 'Inconsolata';
+  display:flex;
+  align-items: center;
+  margin-left: 2%;
+  height: 150px;
+  float:right;
+  font-size: 1em;
+  width: 30%;
+  cursor: pointer
+  /* word-spacing: 2px;
+  letter-spacing: -1px; */
+  /* font-weight: lighter; */
+}
+
+.info-me {
+  color: white;
+  text-decoration: none;
+}
+
+.info-me:hover {
+  text-decoration: underline solid;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 2%;
+}
+
+.material-icons.md-48 {
+   font-size: 48px; 
+}
+
+.action-icons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-right: 1%;
+}
+
+.material-icons.customSize {
+  margin-bottom: 25%;
+  margin-top: 20%;
+  font-size: 3em;
+  opacity: 0.4;
+}
+
+.material-icons.customSize:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.radio {
+  height: 400px;
+  width: 20%;
+  /* margin-right: 2%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.radio:hover + .action-icons {
+  opacity: 0.4;
+}
+
+.visuals {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.note {
+  font-family: 'Inter', 'Inconsolata';
+  /* font-weight: lighter; */
+  margin-top: 4%;
+  padding: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 1em;
+  word-spacing: 2px;
+  font-weight: 600;
+  /* border: 1px dashed; */
+  /* border-radius: 40px; */
+}
+
+p {
+  font-family: 'Inconsolata';
+  text-align: center;
+  word-spacing: 2px;
+  letter-spacing: -0.7px;
+  /* font-weight: bolder; */
+  font-size: 1.2em;
+}
+
+.note:hover {
+  cursor: default;
+  /* font-weight: bold; */
+  background-image: linear-gradient(0deg, rgba(194, 194, 194, 0.268), rgba(172, 172, 172, 0));
+  border-bottom: 3px dotted;
+}
+
+.tick {
+  font-family: 'Overpass Mono', monospace;
+  display: flex;
+  justify-content: left;
+  background-color: rgba(255, 255, 255, 0.345);
+  border-radius: 40px;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 5%;
+  font-size: 20px;
+  font-weight: 200;
+  margin-bottom: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 1%;
+}
+
+.tick:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.radio-label {
+  float: right;
+  cursor: pointer;
+}
+
+.price-table {
+  font-family: 'Overpass Mono', monospace;
+  width: 70%;
+  height: 400px;
+  overflow-y: scroll;
+
+}
+
+.column-head {
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.column-head:hover {
+  background-image: linear-gradient(0deg, rgba(194, 194, 194, 0.268), rgba(172, 172, 172, 0));
+  font-weight: bold;
+}
+
+.column-values {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.price-val {
+  font-size: 13px;
+  width: 100%;
+  margin: 4%;
+  margin-left: 0px;
+  padding-left: 2%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(191, 191, 191, 0.155);
+  border-radius: 0px; 
+}
+
+.head-val {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(191, 191, 191, 0.345);
+  border-radius: 25px;
+  padding: 5%;
+  margin-bottom: 10%;
+  font-weight: bold;
+}
+
+.tick:hover{
+  background-color: rgba(191, 191, 191, 0.445);
+}
+
+.radio-label {
+  display: none;
+}
+
+.radio-label:checked + label .tick{
+  background-color: rgba(218, 218, 218, 0.601);
+  outline: 3px dotted rgb(182, 182, 182);
+  outline-offset: 4px;
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 4%;
+  font-weight: bold;
+}
+
+.loading-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inconsolata';
+  font-size: 100px;
+  font-weight:lighter;
+}
+
+.date-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.date-warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inconsolata';
+  font-size: 1.4em;
+  text-decoration: underline 2px dotted;
+  color: red;
+  margin-top: 0%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.date-field input {
+  font-family: 'Overpass Mono';
+  font-size: 1em;
+  background-color: rgba(255, 255, 255, 0.245);
+  color: rgba(255, 255, 255, 0.828);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding: 4%;
+  border: transparent;
+}
+
+.input-date:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }
