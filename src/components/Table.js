@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import axios, { Axios } from 'axios'
-// import init_price from './data/aapl-data.json'
+import React from 'react'
 import Column from './Column'
 
 const Table = ({ price }) => {
