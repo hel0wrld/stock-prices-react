@@ -54,20 +54,20 @@ const Temp = () => {
       }
 
     const homePrice = async () => {
-        const res = await fetch('https://stock-flask-backend.herokuapp.com//home')
+        const res = await fetch('https://stock-flask-backend.herokuapp.com/home')
         const data = await res.json()
         return data
       }
 
     const customPrice = async (tick) => {
-        const url = 'https://stock-flask-backend.herokuapp.com//custom-tick?tick='+tick
+        const url = 'https://stock-flask-backend.herokuapp.com/custom-tick?tick='+tick
         const res = await fetch(url)
         const data = await res.json()
         return data
       }
 
     const customDatePrice = async (tick, beginDate, endDate) => {
-        const url = 'https://stock-flask-backend.herokuapp.com//date?tick='+tick+'&begin='+beginDate+'&end='+endDate
+        const url = 'https://stock-flask-backend.herokuapp.com/date?tick='+tick+'&begin='+beginDate+'&end='+endDate
         const res = await fetch(url)
         const data = await res.json()
         return data
