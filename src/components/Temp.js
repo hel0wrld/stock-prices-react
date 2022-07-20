@@ -4,16 +4,17 @@ import Tick from './Ticks'
 import { DateTime } from 'luxon'
 import Icons from './Icons'
 
-const Temp = () => {
+const Temp = ( props ) => {
 
     const [begin, setBegin] = useState('2013-12-31')
-    const [end, setEnd] = useState('2014-01-22')
+    const [end, setEnd] = useState('2020-12-31')
     const [warning, setWarning] = useState('')
     const [selectedTick, setSelectedTick] = useState('AAPL')
     const [price, setPrice] = useState([])
     const [loading, setLoading] = useState(true)
     const [initStyleBegin, setInitStyleBegin] = useState()
     const [initStyleEnd, setInitStyleEnd] = useState()
+    const {getPrice, graphIsShown, setGraphIsShown, helpIsShown, setHelpIsShown, aboutIsShown, setAboutIsShown} = props
 
     const clearValueBegin = (e) => {
       e.target.select()
@@ -96,6 +97,7 @@ const Temp = () => {
         const getJson = async () => {
               const valJson = await homePrice()
               setPrice(valJson)
+              getPrice(valJson)
               setLoading(false)
             }
         getJson()
@@ -105,6 +107,7 @@ const Temp = () => {
       const getNewJson = async () => {
         const res = await customDatePrice(tick, begin, end)
         setPrice(res)
+        getPrice(res)
       }
       setSelectedTick(tick)
       getNewJson()
@@ -112,12 +115,16 @@ const Temp = () => {
 
     if (loading)
       return (
-        <div className='loading-message'>...</div>
+        <div className='loading-message'>Hang on a second while we fetch the data...</div>
       )
   else 
       return (
         <>
-          <Icons/>
+          <Icons 
+            graphIsShown={graphIsShown} setGraphIsShown={setGraphIsShown}
+            helpIsShown={helpIsShown} setHelpIsShown={setHelpIsShown}
+            aboutIsShown={aboutIsShown} setAboutIsShown={setAboutIsShown}
+          />
           <div className='radio'>
             <Tick tick='AAPL' checked='true' onClick={() => onClick('AAPL', begin, end)}/>
             <Tick tick='MSFT' checked='false' onClick={() => onClick('MSFT', begin, end)}/>
@@ -150,7 +157,7 @@ const Temp = () => {
               The table on the right will show the prices accordingly.
             </div>
           </div>
-          <Table price={price}/>
+          <Table price={price}/>          
         </>
       )
 }

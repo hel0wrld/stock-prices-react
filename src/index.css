@@ -1,19 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;700&family=DM+Serif+Display&family=Inconsolata:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800;900&family=Overpass+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;700&family=DM+Serif+Display&family=Inconsolata:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800;900&family=Nanum+Myeongjo&family=Overpass+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
 html {
   margin:0;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --color1: rgb(67, 0, 100);
   --color2: rgb(0, 0, 0);
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; 
+  scroll-behavior: smooth;
 }
 
-
 body {
-  background-image: linear-gradient(0deg, var(--color1) 1%, var(--color2));
-  color: rgb(235, 242, 255);
-  /* background-color: rgb(44, 2, 29); */
+  /* background-image: linear-gradient(0deg, var(--color1), var(--color2)); */
+  color: #fafafa;
+  background-color: rgb(26, 0, 90);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Archivo', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -21,6 +27,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 97.5vh;
+  animation: backGroundColorChange 30s infinite;
+}
+
+@keyframes backGroundColorChange {
+  0% {
+    background-color: #252525;
+  }
+
+  25% {
+    background-color: #2c0010
+  }
+
+  50% {
+    background-color: #39183a;
+  }
+
+  75% {
+    background-color: #13072e;
+  }
+
+  100% {
+    background-color: #252525;
+  }
 }
 
 ::selection {
@@ -36,24 +65,26 @@ body {
 
 header {
   display: flex;
-  float:left;
+  /* float:left; */
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   font-size: 40px;
   height: 150px;
   width: 60%;
+  text-decoration: underline dotted 2px;
+  text-underline-offset: 10px;
 }
 
 h1 {
-  font-family: 'Inter', 'Overpass Mono', serif, monospace;
-  font-weight: 800;
+  font-family: 'Playfair Display', 'Overpass Mono', serif, monospace;
+  font-weight: lighter;
   letter-spacing: -8px;
   word-spacing: 15px;
   cursor: pointer;
 }
 
 header:hover {
-  text-decoration: underline dotted 5px;
+  text-decoration: underline dotted 2px;
   text-underline-offset: 10px;
 }
 
@@ -73,8 +104,12 @@ header:hover {
 }
 
 .info-me {
-  color: white;
+  /* color: white; */
   text-decoration: none;
+}
+
+.info-me:visited {
+  color: rgba(105, 105, 105, 0.31);
 }
 
 .info-me:hover {
@@ -106,7 +141,14 @@ header:hover {
   opacity: 0.4;
 }
 
-.material-icons.customSize:hover {
+.material-icons.biggerSize {
+  margin-bottom: 25%;
+  margin-top: 20%;
+  font-size: 3.5em;
+  opacity: 0.6;
+}
+
+.material-icons.customSize:hover, .material-icons.biggerSize:hover {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -178,11 +220,6 @@ p {
   margin-bottom: 1%;
 }
 
-.tick:hover {
-  cursor: pointer;
-  font-weight: 600;
-}
-
 .radio-label {
   float: right;
   cursor: pointer;
@@ -193,7 +230,12 @@ p {
   width: 70%;
   height: 400px;
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+}
 
+.price-table:hover {
+  overflow-y: auto;
 }
 
 .column-head {
@@ -240,15 +282,17 @@ p {
   font-weight: bold;
 }
 
-.tick:hover{
+.tick:hover, .tick-row:hover{
   background-color: rgba(191, 191, 191, 0.445);
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.radio-label {
+.radio-label, .help-radio-label {
   display: none;
 }
 
-.radio-label:checked + label .tick{
+.radio-label:checked + label .tick, .help-radio-label:checked + label .tick-row{
   background-color: rgba(218, 218, 218, 0.601);
   outline: 3px dotted rgb(182, 182, 182);
   outline-offset: 4px;
@@ -260,12 +304,31 @@ p {
 }
 
 .loading-message {
+  /* opacity: 0.7; */
+  margin-top: 150px;
+  letter-spacing: -2px;
+  word-spacing: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Inconsolata';
-  font-size: 100px;
-  font-weight:lighter;
+  font-family: 'Inter';
+  font-size: 20px;
+  font-weight: lighter;
+  animation: flicker ease-in-out 1s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.5;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .date-field {
@@ -289,7 +352,7 @@ p {
   margin-right: 5%;
 }
 
-.date-field input {
+.date-field input, input {
   font-family: 'Overpass Mono';
   font-size: 1em;
   background-color: rgba(255, 255, 255, 0.245);
@@ -311,4 +374,202 @@ p {
 .input-date:hover {
   cursor: pointer;
   opacity: 0.9;
+}
+
+.graphs {
+  margin: 40px;
+  height: 90vh;
+  cursor: default;
+  /* font-size: 150px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transform: translateX(-200px); */
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.graphs.active{
+  /* transform: translateX(0px); */
+  opacity: 1;
+}
+
+.innerabout, .innerhelp {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px dotted; */
+  /* border-right: 2px dotted; */
+  /* border-radius: 20px; */
+  margin: 20px;
+  height: 90%;
+}
+
+.headabout, .headhelp, .graphabout {
+  display: flex;
+  text-decoration: underline 2px dotted  ;
+  text-underline-offset: -2px;
+  /* letter-spacing: -4px; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 50px;
+  font-family: 'Inconsolata';
+  font-weight: bold;
+}
+
+.headhelp {
+  margin-bottom: 20px;
+}
+
+.lastdiv {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin: 20px;
+  margin-top: 0px;
+  height: 10px;
+  animation: bobbleup 1s infinite ;
+  /* padding-right: 8%; */
+}
+
+@keyframes bobbleup {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+  
+}
+
+.infoabout, .helptext, .helptexticon {
+  /* font-size: 1.2em; */
+  font-family: 'Inconsolata';
+  /* font-weight: bold; */
+  text-align: center;
+  margin: 5%;
+}
+
+.helptext, .helptexticon {
+  text-align: left;
+  /* width: 70%; */
+}
+
+.helptexticon {
+  padding-bottom: 5%;
+  padding-left: 2%;
+}
+
+.row {
+  height: 100px;
+  font-family: 'Inter';
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-last {
+  font-family: 'Overpass Mono';
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.headhelp {
+  margin-bottom: 20px;
+}
+
+.tick-row {
+  font-family: 'Overpass Mono', monospace;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.345);
+  border-radius: 40px;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 5%;
+  font-size: 20px;
+  font-weight: 200;
+  margin-bottom: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 1%;
+}
+
+.help-tick-label {
+  display: flex;
+  justify-content: center;
+}
+
+.help-input-date {
+  padding: 2%;
+  height: 8px;
+  width: fit-content ;
+  text-align: center;
+}
+
+.innergraph {
+  width: 100%;
+  height: 100%;
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+/* svg {
+  padding-left: 50px;
+  padding-right: 50px;
+  border: 1px dotted white;
+} */
+
+.yAxis>.tick>text, .xAxis>.tick>text {
+  font-size: 0.6em;
+}
+
+.yAxisLabel, .xAxisLabel {
+  font-family: 'Inter';
+  color: white;
+  font-size: 1.2em;
+}
+
+.yAxis, .xAxis {
+  stroke-width: 3;
+}
+
+.chart-graph {
+  stroke-width: 2;
+}
+
+.tooltip {
+  background-color: white;
+  color:rgb(0, 0, 0);
+  font-family: 'Inter';
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.graphabout {
+  margin-bottom: 0px;
+}
+
+.idkstfupls {
+  color:rgba(63, 63, 63, 0.528);
+  color: rgba(255, 255, 255, 0.584);
 }

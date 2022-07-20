@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 const Headers = () => {
   return (
     <header>
-        <h1>
+        <h1 onClick={() => window.location.reload()} >
         Stock Prices
         </h1>
     </header>
